@@ -1,4 +1,5 @@
 var express = require('express');
+var alchemy = require('./alchemy');
 var app = express();
 
 app.get('/', function (req, res) {
@@ -11,3 +12,8 @@ var server = app.listen(3000, function () {
 
   console.log('Pillager app listening at http://%s:%s', host, port);
 });
+
+//ALCHEMY SAMPLE USAGE:
+//alchemy.getKeywords('http://www.google.com', 10, function(results) {
+//    console.log(results);
+//});
