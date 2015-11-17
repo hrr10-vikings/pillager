@@ -3,14 +3,70 @@
 <head>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="./popup.js"></script>
+
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js">  </script>
-  <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
+  <link rel="import" href="bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+ <link rel="import" href="bower_components/iron-icon/iron-icon.html">
+ <link rel="import" href="bower_components/iron-image/iron-image.html">
+ <!-- <link rel="import" href="bower_components/paper-styles/default-theme.html"> -->
+ <link rel="import" href="paper-menu-shared-styles.html">
+ <link rel="stylesheet" href="css/master.css" >
+ <style>
+    paper-button {
+      display: block;
+      background: #4285f4;
+      color: #fff;
+    }
+    paper-menu {
+      display: block;
+    }
+    paper-menu-button {
+      margin: auto;
+    }
+    iron-image {
+      padding: 1em;
+    }
+    .item {
+      max-width: 300px;
+    }
+    .horizontal-section {
+      text-align: center;
+    }
+  </style>
+
 </head>
 
   <body >
     <div class="container">
       <!-- button that causes the page to be scrubbed -->
-      <paper-button>testing</paper-button>
+      <div class="menu">
+        <paper-toolbar>
+          <!-- <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button> -->
+
+          <div class="title">Pillager</div>
+          <paper-menu-button>
+            <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
+            <paper-menu class="dropdown-content">
+              <paper-item>Share</paper-item>
+              <paper-item>Settings</paper-item>
+              <paper-item>Help</paper-item>
+            </paper-menu>
+          </paper-menu-button>
+          <!-- <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button> -->
+        </paper-toolbar>
+      </div>
+      <div class="input">
+        <paper-input label="User Name"></paper-input>
+        <paper-input label="Password"></paper-input>
+      </div>
+      <paper-button raised>Submit</paper-button>
     </div>
   </body>
 </html>
