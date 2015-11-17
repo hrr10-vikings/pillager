@@ -1,4 +1,5 @@
 var express = require('express');
+var alchemy = require('./alchemy');
 var app = express();
 
 app.set('port', process.env.PORT || 8080);
@@ -18,3 +19,7 @@ var server = app.listen(app.get('port'), function () {
 
 //app.listen(app.get('port'));
 
+//ALCHEMY SAMPLE USAGE:
+//alchemy.getKeywords('http://www.google.com', 10, function(results) {
+//    console.log(results);
+//});

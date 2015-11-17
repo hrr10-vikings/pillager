@@ -25,6 +25,7 @@ build/Release
 # Server Dependency directory
 node_modules
 
+<<<<<<< HEAD
 # Client Dependency directory
 bower_components
 
