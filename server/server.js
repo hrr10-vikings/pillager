@@ -7,9 +7,14 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-var server = app.listen(app.get('port'), function () {
-  var host = server.address().address;
-  var port = server.address().port;
+//var server = app.listen(app.get('port'), function () {
+//  var host = server.address().address;
+//  var port = server.address().port;
+//
+//  console.log('Pillager app listening at http://%s:%s', host, port);
+//});
 
-  console.log('Pillager app listening at http://%s:%s', host, port);
-});
+app.listen(app.get('port'));
+
+
+console.log('Pilliger app now listening on port ' + app.get('port'));
