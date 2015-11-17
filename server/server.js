@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 
 app.use(express.static(__dirname + '/public'));
 
-var server = app.listen(app.get('port'));
+app.listen(app.get('port'));
 console.log('Pillager app now listening on port ' + app.get('port'));
 
 
