@@ -17,4 +17,4 @@ app.get('/', function (req, res) {
 app.listen(app.get('port'));
 
 
-console.log('Pilliger app now listening on port ' + app.get('port'));
+console.log('Pillager app now listening on port ' + app.get('port'));
