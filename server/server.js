@@ -13,8 +13,8 @@ var server = app.listen(app.get('port'), function () {
   var host = server.address().address;
   var port = server.address().port;
 
+  console.log('Pillager app now listening on port ' + app.get('port'));
+});
 
-app.listen(app.get('port'));
+//app.listen(app.get('port'));
 
-
-console.log('Pillager app now listening on port ' + app.get('port'));
