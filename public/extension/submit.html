@@ -68,15 +68,8 @@
           <!-- <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button> -->
         </paper-toolbar>
       </div>
-      <div class="login">
-        <!-- <paper-input-container label="Testing"> -->
-          <paper-input label="User Name" prevent-invalid-input allowed-pattern="[a-zA-Z0-9\s]" id="un"></paper-input>
-          <paper-input label="Password" prevent-invalid-input allowed-pattern="[a-zA-Z0-9]" id="pw"></paper-input>
-          <paper-button raised>Sign In</paper-button>
-        <!-- </paper-input-container> -->
-      </div>
       <div class="dataEntry">
-      <paper-textarea label="Enter your tags"></paper-textarea>
+      <paper-textarea label="Enter your tags" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-textarea>
         <paper-button raised>Submit</paper-button>
 
         <div class="bookmarks">
