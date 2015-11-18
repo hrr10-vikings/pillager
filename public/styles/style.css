@@ -38,9 +38,18 @@
 	margin-top: 15px;
 }
 
-button {
-	float: right;
+#group {
+	width:305px;
+	margin:auto;
 }
+
+button{
+    float: right;
+	height: 27px;
+    width: 79px;
+    font-size: small;
+}
+
 
 input[type="text"],
 input[type="password"] {
