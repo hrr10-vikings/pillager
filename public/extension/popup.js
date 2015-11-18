@@ -6,16 +6,16 @@ function base(tab,data){
     console.log('not working');
   } else{
     //check for logged in
-    chrome.identify.launchWebAuthFlow(
-      {'url': '<url-to-do-auth>', 'interactive': true},
-      function(redirect_url) { /* Extract token from redirect_url */ });
+    // chrome.identify.launchWebAuthFlow(
+    //   {'url': '<url-to-do-auth>', 'interactive': true},
+    //   function(redirect_url) { /* Extract token from redirect_url */ });
     }
     if(!signedIn){
       //On click scrape the page for data
         //chrome browser action onclicked listener
         //Active Tab run script
         $('.dataEntry').hide();
-        base
+        // base
     } else{
       $('.login').hide();
       $('.dataEntry').show();
@@ -35,4 +35,4 @@ var pillage = function(tab,data){
   request.open('POST',url,true);
 }
 // console.log('testing');
-window.onload = testing; //performs checks when the page is loaded
+window.onload = base; //performs checks when the page is loaded
