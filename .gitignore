@@ -28,6 +28,10 @@ node_modules
 # Client Dependency directory
 bower_components
 
+#config file
+/server/config.js
+
+
 #Mac OS files
 .DS_Store
 **/.DS_Store

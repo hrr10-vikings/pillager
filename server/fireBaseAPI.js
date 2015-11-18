@@ -1,58 +1,76 @@
 /**
  * Created by paulbhorjee on 11/16/15.
  */
+
+
 var Firebase = require("firebase");
+var configFile = require("./config.js");
 
-var ref = new Firebase("https://sweltering-torch-27.firebaseio.com/");
+var fbUrl = configFile.firebaseUrl;
 
-var usersRef = ref.child("users");
+exports.createUser = function (userName, passwordCrypted) {
+  var usersRef = new Firebase( fbUrl + "/users");
 
-//usersRef.set({
-//  alanisawesome: {
-//    date_of_birth: "June 23, 1912",
-//    full_name: "Alan Turing",
-//    sites: []
-//  },
-//  gracehop: {
-//    date_of_birth: "December 9, 1906",
-//    full_name: "Grace Hopper",
-//    sites: []
-//  }
-//});
+  var userObj = {};
+  userObj[userName] = { 'password': passwordCrypted };
 
-var userName = "gracehop";
+  usersRef.update(userObj);
+};
 
-//var userBookmarks = "users/" + userName + "/bookmarks/"
-//var userBookmarksRef = ref.child(userBookmarks);
-//
-//var newSiteRef = userBookmarksRef.push();
-//
-//newSiteRef.set({
-//  site: "www.google.com",
-//  tags: ['search', 'maps', 'calendar']
-//});
+exports.getUser = function (userName, trueCallback, falseCallback) {
+  var usersRef = new Firebase( fbUrl + "/users/" + userName);
 
+  usersRef.once('value', function (snapshot) {
+    if (snapshot.val() !== null) {
+      trueCallback(snapshot.val().password);
+    } else {
+      falseCallback();
+    }
+  });
+};
 
-var getAllBookmarksWithTags = function (username, callback) {
-  if (!username || !callback) {
+exports.addBookmark = function (userName, url, tags) {
+  if (!userName || !url) {
     return null;
   }
 
-  var ref = new Firebase("https://sweltering-torch-27.firebaseio.com/users/" + userName + "/bookmarks");
+  var bookMarkObj = {};
+  bookMarkObj['site'] = url;
+  bookMarkObj['tags'] = tags;
+
+  var ref = new Firebase( fbUrl + "/users/" + userName);
+  var bookMarksRef = ref.child("bookmarks");
+
+  bookMarksRef.push(bookMarkObj);
+};
+
+
+exports.getAllBookmarks = function (userName, callback) {
+  if (!userName || !callback) {
+    return null;
+  }
+
+  var ref = new Firebase( fbUrl + "/users/" + userName + "/bookmarks");
+  var bookmarks = [];
 
   ref.on("value", function (snapshot) {
-    callback(snapshot.val());
+    snapshot.forEach(function(childSnapshot) {
+      bookmarks.push(childSnapshot.val());
+    });
+
+    callback(bookmarks);
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
 };
 
-var getAllBookmarksByTag = function (username, tag, callback) {
-  if (!username || !tag || !callback) {
+
+exports.getAllBookmarksByTag = function (userName, tag, callback) {
+  if (!userName || !tag || !callback) {
     return null;
   }
 
-  var ref = new Firebase("https://sweltering-torch-27.firebaseio.com/users/" + userName + "/bookmarks");
+  var ref = new Firebase(fbUrl + "/users/" + userName + "/bookmarks");
   var filteredBookmarks = [];
 
   ref.once("value", function (snapshot) {
@@ -64,7 +82,6 @@ var getAllBookmarksByTag = function (username, tag, callback) {
       }
     });
 
-
     callback(filteredBookmarks);
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
@@ -72,12 +89,19 @@ var getAllBookmarksByTag = function (username, tag, callback) {
 };
 
 
+//getUser("pbhorje",
+//  function (pass) { console.log(pass) },
+//  function (pass) { console.log("nope") }
+//);
 
+//createUser("pbhorje", "adgsdtgw45");
 
-//getAllBookmarksWithTags("gracehop", function (sites) {
+//addBookmark("pbhorje", "www.gogetem.com?q=candy", ['gum', 'candy']);
+//
+//getAllBookmarks("pbhorje", function (sites) {
 //  console.log(sites);
 //});
-
-getAllBookmarksByTag("gracehop", "calendar", function (sites) {
-  console.log(sites);
-});
+//
+//getAllBookmarksByTag("pbhorje", "candy", function (sites) {
+//  console.log(sites);
+//});
