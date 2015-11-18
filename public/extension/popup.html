@@ -9,6 +9,7 @@
   <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
   <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
   <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-input/paper-textarea.html">
   <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html">
   <link rel="import" href="bower_components/paper-menu/paper-menu.html">
   <link rel="import" href="bower_components/paper-item/paper-item.html">
@@ -24,6 +25,9 @@
       display: block;
       background: #4285f4;
       color: #fff;
+    }
+    paper-toolbar.paper-toolbar-0{
+      background: black;
     }
     paper-menu {
       display: block;
@@ -63,14 +67,27 @@
           <!-- <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button> -->
         </paper-toolbar>
       </div>
-      <div class="input">
-        <paper-input label="User Name"></paper-input>
-        <paper-input label="Password"></paper-input>
+      <div class="login">
+        <paper-input-container label="Testing">
+          <paper-input label="User Name"></paper-input>
+          <paper-input label="Password"></paper-input>
+          <paper-button raised>Sign In</paper-button>
+        </paper-input-container>
       </div>
-      <paper-button raised>Submit</paper-button>
+      <div class="dataEntry">
+      <paper-textarea label="Enter your tags"></paper-textarea>
+        <paper-button raised>Submit</paper-button>
+
+        <div class="bookmarks">
+            <a class="links" target="_blank" href="OUR_PAGE">View Your Bookmarks</a>
+        </div>
+
+
+      </div>
+
     </div>
-    <footer class="footer">
-      <a class="links" target="_blank" href="OUR_PAGE">View Your Account</a>
-    </footer>
+    <!-- <footer class="footer">
+
+    </footer> -->
   </body>
 </html>
