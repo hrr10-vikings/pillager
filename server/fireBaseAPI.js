@@ -6,7 +6,7 @@
 var Firebase = require("firebase");
 var configFile = require("./config.js");
 
-var fbUrl = configFile.firebaseUrl;
+var fbUrl = process.env.FIREBASE_URL || configFile.firebaseUrl;
 
 exports.createUser = function (userName, passwordCrypted) {
   var usersRef = new Firebase( fbUrl + "/users");
