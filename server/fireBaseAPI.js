@@ -4,9 +4,15 @@
 
 
 var Firebase = require("firebase");
-var configFile = require("./config.js");
 
-var fbUrl = process.env.FIREBASE_URL || configFile.firebaseUrl;
+var fbUrl = '';
+
+if (!process.env.FIREBASE_URL) {
+  var configFile = require("./config.js");
+  fbUrl = configFile.firebaseUrl;
+} else {
+  fbUrl = process.env.FIREBASE_URL
+}
 
 module.exports.createUser = function (userName, passwordCrypted) {
   var usersRef = new Firebase( fbUrl + "/users");
@@ -95,7 +101,7 @@ module.exports.getAllBookmarksByTag = function (userName, tag, callback) {
 
 //createUser("pbhorje", "adgsdtgw45");
 
-//addBookmark("pbhorje", "www.gogetem.com?q=candy", ['gum', 'candy']);
+// module.exports.addBookmark("pbhorje", "www.gogetem.com?q=candy", ['gum', 'candy']);
 //
 //getAllBookmarks("ben", function (sites) {
 //  console.log(sites);
