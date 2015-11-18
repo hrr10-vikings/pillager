@@ -1,10 +1,13 @@
-var jwt  = require('jwt-simple');
+var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt-nodejs');
+var db = require('./fireBaseAPI');
 var SECRET = 'secret';
 
 module.exports.checkAuth = function(req, res, next) {
   console.log("in auth");
+  console.log(req.headers);
   var token = req.headers['x-access-token'];
+  console.log(token);
   if (!token) {
       return res.sendStatus(403); // send forbidden if a token is not provided
   }
@@ -19,7 +22,7 @@ module.exports.checkAuth = function(req, res, next) {
     }
 };
 
-module.exports.signin = function (req, res, next) {
+module.exports.signIn = function (req, res, next) {
     var username = req.body.username, password = req.body.password;
     db.getUser(username, function(hash) {
       bcrypt.compare(password, hash, function(err, res) {
@@ -33,11 +36,11 @@ module.exports.signin = function (req, res, next) {
     });
   };
 
-module.exports.signup = function (req, res, next) {
+module.exports.signUp = function (req, res, next) {
     var username  = req.body.username, password  = req.body.password;
     db.getUser(username, function() {next(new Error('User already exists!'));}, function() {
       bcrypt.hash(password, null, null, function(err, hash) {
-        createUser(username, hash);
+        db.createUser(username, hash);
         res.json({token: jwt.encode(username, SECRET)});
         next();
       });
