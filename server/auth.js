@@ -5,7 +5,9 @@ var SECRET;
 
 try {
   SECRET = process.env.JWTSecret || require('./config').JWTSecret;
-} catch (e) { }
+} catch (e) {
+  console.log(e);
+}
 
 module.exports.checkAuth = function(req, res, next) {
   var token = req.headers['x-access-token'];

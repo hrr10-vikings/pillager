@@ -8,12 +8,7 @@ var Firebase = require("firebase");
 var fbUrl = '';
 
 try {
-if (!process.env.FIREBASE_URL) {
-  var configFile = require("./config.js");
-  fbUrl = configFile.firebaseUrl;
-} else {
-  fbUrl = process.env.FIREBASE_URL
-}
+  fbUrl= process.env.FIREBASE_URL || require('./config').firebaseUrl;
 } catch (e) {
   console.log(e);
 }
