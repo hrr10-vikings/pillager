@@ -1,17 +1,19 @@
 var express = require('express');
 var bodyParser = require('body-parser').json();
+var alchemy = require('./alchemy');
+var path = require('path');
 var app = express();
 
 app.set('port', process.env.PORT || 8080);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
 
 app.use(bodyParser);
 
 var apiRouter = express.Router();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../public'));
 app.use('/api', apiRouter);
 
 require('./apiRouter')(apiRouter);
