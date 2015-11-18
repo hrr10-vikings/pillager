@@ -8,7 +8,7 @@ var configFile = require("./config.js");
 
 var fbUrl = process.env.FIREBASE_URL || configFile.firebaseUrl;
 
-exports.createUser = function (userName, passwordCrypted) {
+module.exports.createUser = function (userName, passwordCrypted) {
   var usersRef = new Firebase( fbUrl + "/users");
 
   var userObj = {};
@@ -17,7 +17,7 @@ exports.createUser = function (userName, passwordCrypted) {
   usersRef.update(userObj);
 };
 
-exports.getUser = function (userName, trueCallback, falseCallback) {
+module.exports.getUser = function (userName, trueCallback, falseCallback) {
   var usersRef = new Firebase( fbUrl + "/users/" + userName);
 
   usersRef.once('value', function (snapshot) {
@@ -29,7 +29,7 @@ exports.getUser = function (userName, trueCallback, falseCallback) {
   });
 };
 
-exports.addBookmark = function (userName, url, tags) {
+module.exports.addBookmark = function (userName, url, tags) {
   if (!userName || !url) {
     return null;
   }
@@ -44,8 +44,7 @@ exports.addBookmark = function (userName, url, tags) {
   bookMarksRef.push(bookMarkObj);
 };
 
-
-exports.getAllBookmarks = function (userName, callback) {
+module.exports.getAllBookmarks = function (userName, callback) {
   if (!userName || !callback) {
     return null;
   }
@@ -65,7 +64,7 @@ exports.getAllBookmarks = function (userName, callback) {
 };
 
 
-exports.getAllBookmarksByTag = function (userName, tag, callback) {
+module.exports.getAllBookmarksByTag = function (userName, tag, callback) {
   if (!userName || !tag || !callback) {
     return null;
   }
