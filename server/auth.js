@@ -6,7 +6,7 @@ module.exports.checkAuth = function(req, res, next) {
   console.log("in auth");
   var token = req.headers['x-access-token'];
   if (!token) {
-      return res.send(403); // send forbidden if a token is not provided
+      return res.sendStatus(403); // send forbidden if a token is not provided
   }
 
   try {
@@ -27,9 +27,9 @@ module.exports.signin = function (req, res, next) {
           res.json({token: jwt.encode(username, SECRET)});
           next();
         } else {
-          res.send(401);
+          res.sendStatus(401);
         }
-      }, function() {res.send(401);});
+      }, function() {res.sendStatus(401);});
     });
   };
 

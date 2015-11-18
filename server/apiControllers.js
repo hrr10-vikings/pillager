@@ -1,9 +1,14 @@
 var alchemy = require('./alchemy');
+var db = require('./fireBaseAPI');
 var NUM_KEYWORDS = 10;
 
 module.exports.parseUrl = function(req, res) {
   alchemy.getKeywords(req.body.newUrl, NUM_KEYWORDS, function(results) {
-    //TODO: add to database here
+    db.addBookmark("ben", req.body.newUrl, results);
+
+    db.getAllBookmarks("ben", function (sites) {
+      console.log(sites);
+    });
     res.end(JSON.stringify(results));
   });
 }
