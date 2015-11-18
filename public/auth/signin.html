@@ -10,14 +10,14 @@
 	<div id="signinContainer">
 		<h2 id="signinHeader">Please sign in...</h2>
 			<div id="signinForm">
-			<form>
+			<form name="signinForm" ng-submit='signin()'>
 				<label>Email</label><br>
-				  <input type="text"><br><br>
+				  <input type="text" ng-model="user.email"><br><br>
 				<label>Password</label><br>
-				  <input type="password"><br><br>
+				  <input type="password" ng-model="user.password"><br><br>
 				<div id="group">
 					<a href="#/signup">Need an account? Sign up here!</a>
-					<button type='submit'>Login</button><br><br>
+					<button>Login</button><br><br>
 				</div>
 			</form>	
 		</div>
