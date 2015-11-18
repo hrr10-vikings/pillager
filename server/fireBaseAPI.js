@@ -7,11 +7,15 @@ var Firebase = require("firebase");
 
 var fbUrl = '';
 
+try {
 if (!process.env.FIREBASE_URL) {
   var configFile = require("./config.js");
   fbUrl = configFile.firebaseUrl;
 } else {
   fbUrl = process.env.FIREBASE_URL
+}
+} catch (e) {
+  console.log(e);
 }
 
 module.exports.createUser = function (userName, passwordCrypted) {
