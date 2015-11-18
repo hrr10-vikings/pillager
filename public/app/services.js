@@ -1,6 +1,6 @@
 angular.module('pillager.services', [])
 
-.factory('Authorize', function ($http) {
+.factory('Authenticate', function ($http) {
 	//handles sending user data to server on sign up
 	var signup = function (user) {
     return $http({
@@ -9,7 +9,7 @@ angular.module('pillager.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log(resp);
+      console.log(resp.data.token);
     });
   };
 
@@ -21,7 +21,7 @@ angular.module('pillager.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log(resp);
+      console.log(resp.data.token);
     });
   };
 
