@@ -45,7 +45,9 @@ button {
 input[type="text"],
 input[type="password"] {
     width: 300px;
-    margin:auto;
+    margin: auto;
+    height: 23px;
+    font-size: inherit;
 }
 
 a, u {
