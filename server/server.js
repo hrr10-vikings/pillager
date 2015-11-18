@@ -12,10 +12,8 @@ app.get('/', function(req, res) {
 
 app.use(bodyParser);
 
-app.use(express.static(__dirname + '/../public'));
-
 var apiRouter = express.Router();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/../public'));
 app.use('/api', apiRouter);
 
 require('./apiRouter')(apiRouter);
