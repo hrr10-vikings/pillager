@@ -19,6 +19,14 @@ module.exports.getUrls = function(req, res) {
   });
 }
 
+module.exports.getGraphData = function(req, res) {
+  console.log(req.body);
+
+  var dummyUrls = {'amazon': ['keyword', 'keyword2'], 'google': ['keyword3', 'keyword4']};
+
+  res.json(dummyUrls);
+}
+
 module.exports.signIn = function(req, res) {
   module.exports.signIn = function(req, res, next) {
     auth.signIn(req, res, next);
