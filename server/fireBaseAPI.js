@@ -97,7 +97,7 @@ module.exports.getAllBookmarksByTag = function (userName, tag, callback) {
 
 //addBookmark("pbhorje", "www.gogetem.com?q=candy", ['gum', 'candy']);
 //
-//getAllBookmarks("pbhorje", function (sites) {
+//getAllBookmarks("ben", function (sites) {
 //  console.log(sites);
 //});
 //
