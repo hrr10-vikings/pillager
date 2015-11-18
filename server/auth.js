@@ -24,7 +24,7 @@ module.exports.checkAuth = function(req, res, next) {
 };
 
 module.exports.signIn = function (req, res, next) {
-    var username = req.body.email, password = req.body.password;
+    var username = req.body.username, password = req.body.password;
     db.getUser(username, function(hash) {
       bcrypt.compare(password, hash, function(err, result) {
         if (result) {
@@ -38,7 +38,7 @@ module.exports.signIn = function (req, res, next) {
   };
 
 module.exports.signUp = function (req, res, next) {
-    var username  = req.body.email, password  = req.body.password;
+    var username  = req.body.username, password  = req.body.password;
     db.getUser(username, function() {next(new Error('User already exists!'));}, function() {
       bcrypt.hash(password, null, null, function(err, hash) {
         db.createUser(username, hash);
