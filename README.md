@@ -48,6 +48,7 @@ Additionally, you will need to obtain some keys:
 - Alchemy API key - place in server/api_key.txt
 - Firebase url
 - JWT Secret
+
 These two should be placed in server/config.js in accordance with the following example:
 ```javascript
 var config = {
