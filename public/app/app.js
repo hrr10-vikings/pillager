@@ -20,6 +20,12 @@ var app = angular.module('pillager', [
         controller: 'AuthController',
         requiresLogin: true
     })
+    .when('/graph', {
+      templateUrl: 'bookmarks/graph.html'
+    })
+    .otherwise({
+      redirectTo: '/signin'
+    })
     .otherwise({
     	redirectTo: '/signup'
     });
