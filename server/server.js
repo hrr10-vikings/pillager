@@ -1,22 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser').json();
+var alchemy = require('./alchemy');
+var path = require('path');
 var app = express();
 
 app.set('port', process.env.PORT || 8080);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
 
-<<<<<<< d843e946eda3237be19935e0900d274c73ed8475
 app.use(bodyParser);
-=======
-app.use(express.static(__dirname + '/public'));
 
-var server = app.listen(app.get('port'), function () {
-  var host = server.address().address;
-  var port = server.address().port;
->>>>>>> server.js now serves static files
+app.use(express.static(__dirname + '/../public'));
 
 var apiRouter = express.Router();
 app.use(express.static(__dirname + '/public'));
