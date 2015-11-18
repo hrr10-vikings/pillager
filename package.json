@@ -14,8 +14,9 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "bower": "^1.6.5",
-    "express": "^4.0.0",
     "firebase": "^2.3.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "express": "^4.2.2",
+    "jwt-simple": "^0.2.0"
   }
 }
