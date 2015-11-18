@@ -26,4 +26,4 @@ module.exports = function(app) {
   //register sign-in/sign-up controllers
   app.post('/users/signin', controllers.signIn);
   app.post('/users/signup', controllers.signUp);
-}
+};
