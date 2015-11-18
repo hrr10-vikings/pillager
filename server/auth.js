@@ -3,13 +3,9 @@ var bcrypt = require('bcrypt-nodejs');
 var db = require('./fireBaseAPI');
 var SECRET;
 
-if (!process.env.JWTSecret) {
-  var configFile = require("./config.js");
-  SECRET = configFile.firebaseUrl;
-} else {
-  SECRET = process.env.JWTSecret;
-}
-//var SECRET = process.env.JWTSecret || require('./config').JWTSecret;
+try {
+  SECRET = process.env.JWTSecret || require('./config').JWTSecret;
+} catch (e) { }
 
 module.exports.checkAuth = function(req, res, next) {
   var token = req.headers['x-access-token'];
