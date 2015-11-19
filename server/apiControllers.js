@@ -1,7 +1,7 @@
 var alchemy = require('./alchemy');
 var db = require('./fireBaseAPI');
 var auth = require('./auth');
-var NUM_KEYWORDS = 4;
+var NUM_KEYWORDS = 4; //how many automatic keywords should be associated with each bookmark
 
 module.exports.parseUrl = function(req, res) {
   alchemy.getKeywords(req.body.newUrl, NUM_KEYWORDS, function(results) {
