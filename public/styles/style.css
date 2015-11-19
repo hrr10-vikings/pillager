@@ -79,6 +79,7 @@ nav ul{
     margin: 0;
     padding: 0;
     height: 36px;
+    float: right;
 }
 nav ul li {
     display: inline-block;
