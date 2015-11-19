@@ -47,8 +47,9 @@ var app = angular.module('pillager', [
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
     console.log("ROUTE: ", next.$$route, $window.localStorage);
     if(next.$$route.requiresLogin && !Authenticate.isAuthed()) {
-      console.log("unauthorized");
       $location.path('/signin');
+    } else {
+      $location.path('/main');
     }
   });
 });
