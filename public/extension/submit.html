@@ -60,7 +60,7 @@
           <paper-menu-button>
             <paper-icon-button icon="menu" class="dropdown-trigger"></paper-icon-button>
             <paper-menu class="dropdown-content">
-            <paper-item><a is="pushstate-anchor" class="links" href="/submit.html"></a></paper-item>
+              <paper-item><a is="pushstate-anchor" class="links" href="/submit.html"></a></paper-item>
               <paper-item><a is="pushstate-anchor" class="links" href="./popup.html">Home</a></paper-item>
               <paper-item><a is="pushstate-anchor" class="links" href="/submit.html">Link Submission</a></paper-item>
               <paper-item>Help</paper-item>
@@ -69,15 +69,20 @@
           <!-- <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button> -->
         </paper-toolbar>
       </div>
-      <div class="login">
-        <!-- <paper-input-container label="Testing"> -->
-          <paper-input label="User Name" prevent-invalid-input allowed-pattern="[a-zA-Z0-9\s]" id="un"></paper-input>
-          <paper-input label="Password" type="password" prevent-invalid-input allowed-pattern="[a-zA-Z0-9]" id="pw"></paper-input>
-          <paper-button raised onclick="login()">Sign In</paper-button>
-        <!-- </paper-input-container> -->
+      <div class="dataEntry">
+      <paper-textarea label="Enter your tags" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-textarea>
+        <paper-button raised>Submit</paper-button>
+
+        <div class="bookmarks">
+            <a class="links" target="_blank" href="OUR_PAGE">View Your Bookmarks</a>
+        </div>
+
+
       </div>
 
     </div>
+    <!-- <footer class="footer">
 
+    </footer> -->
   </body>
 </html>
