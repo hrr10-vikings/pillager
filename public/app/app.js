@@ -26,9 +26,6 @@ var app = angular.module('pillager', [
       controller: 'GraphController'
     })
     .otherwise({
-      redirectTo: '/signin'
-    })
-    .otherwise({
     	redirectTo: '/signup'
     });
 
