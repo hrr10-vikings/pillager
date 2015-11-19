@@ -11,22 +11,24 @@ var app = angular.module('pillager', [
     .when('/signin', {
     	templateUrl: 'auth/signin.html',
     	controller: 'AuthController',
+      requiresLogin: false
     })
     .when('/signup', {
     	templateUrl: 'auth/signup.html',
     	controller: 'AuthController',
+      requiresLogin: false
     })
     .when('/main', {
       templateUrl: 'main/main.html', //this will need to be changed later
-      controller: 'AuthController',
       requiresLogin: true
     })
     .when('/graph', {
       templateUrl: 'bookmarks/graph/graph.html',
       controller: 'GraphController',
+      requiresLogin: true
     })
     .otherwise({
-    	redirectTo: '/signup'
+    	redirectTo: '/signin'
     });
 
     $httpProvider.interceptors.push('AuthInterceptor');
@@ -46,10 +48,8 @@ var app = angular.module('pillager', [
 .run(function ($rootScope, $location, Authenticate, $window) {
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
     console.log("ROUTE: ", next.$$route, $window.localStorage);
-    if(next.$$route.requiresLogin && !Authenticate.isAuthed()) {
+    if(next.$$route && next.$$route.requiresLogin && !Authenticate.isAuthed()) {
       $location.path('/signin');
-    } else {
-      $location.path('/main');
     }
   });
 });

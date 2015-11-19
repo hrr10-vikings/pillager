@@ -3,7 +3,6 @@ angular.module('pillager.services', [])
 .factory('Authenticate', function ($http, $location, $window) {
 	//handles sending user data to server on sign up, in response the server will send back a token
 	var signup = function (user) {
-    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signup',
@@ -16,7 +15,6 @@ angular.module('pillager.services', [])
 
 	//handles sending user data to server on sign in, in respsonse the server will send back a token
 	var signin = function (user) {
-    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signin',
