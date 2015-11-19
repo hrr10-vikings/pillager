@@ -1,5 +1,6 @@
 //Check if Incognito
 var signedIn = false;
+var serverUrl = 'http://127.0.0.1:8080';
 function base(tab,data){
   if(tab.incognito){
     //change the popup body
@@ -21,27 +22,30 @@ function base(tab,data){
     }
 }
 
-var login = function(){
-  var un = $('#un').val();
-  var pw = $('#pw').val();
+var login = function(un,pw){
+  un = un || $('#un').val();
+  pw = pw || $('#pw').val();
   var creds = {username: un, password: pw}
   $.ajax({
     method: 'POST',
-    url: "OUR_DATABASE",
-    context: creds,
-    success: function(){
-      chrome.extension.getURL("./submit.html")
+    contentType: 'application/json',
+    url: 'http://127.0.0.1:8080/api/users/signin',
+    data: JSON.stringify(creds),
+    success: function(data){
+      // chrome.extension.getURL("./submit.html")
+      console.log(data.token);
       //not sure how to redirect
     },
     failure: function(){
       console.log("incorrect information");
     }
-  }).done(function() {
-    chrome.storage.sync.set({'pillageLogin': creds}, function() {
-         // Notify that we saved.
-         console.log('Settings saved');
-       });
-  });
+  })
+  // .done(function() {
+  //   chrome.storage.sync.set({'pillageLogin': creds}, function() {
+  //        // Notify that we saved.
+  //        console.log('Settings saved');
+  //      });
+  // });
 
 }
 // console.log('testing');
