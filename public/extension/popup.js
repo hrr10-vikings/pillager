@@ -1,15 +1,21 @@
 //Check if Incognito
 var signedIn = false;
-var serverUrl = 'http://127.0.0.1:8080/api/users/signin';
+//backup 'http://127.0.0.1:8080/api/users/signin';
+var serverUrl = 'https://pillager-staging.herokuapp.com/api/users/signin';
 function base(tab,data){
 
-  if(tab.incognito){ //Local storage has a token
-    //change to the submit page
-    console.log('not working');
-  }
+  // if(chrome.storage.get('pillageToken', function(object items){//Local storage has a token
+  //
+  // })){
+  //   //change to the submit page
+  //
+  // } else {
+  // //render login
+  // }
 }
 
 var login = function(un,pw){
+  console.log('testing');
   un = un || $('#un').val();
   pw = pw || $('#pw').val();
   var creds = {username: un, password: pw}
@@ -23,6 +29,7 @@ var login = function(un,pw){
       chrome.storage.sync.set({'pillageToken': data.token}, function() {
          // Notify that we saved.
          console.log(data.token);
+         //change to submit
        });
 
       //add token into local storage

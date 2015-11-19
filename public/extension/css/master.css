@@ -26,3 +26,18 @@ iron-image {
   text-decoration: none;
   color: #212121;
 }
+.bookmarks a{
+  text-decoration: none;
+  color: #212121;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 10px;
+}
+.linkA{
+  text-align: center;
+}
+body{
+  min-width: 390px;
+  margin: 8px;
+  font-family: 'Roboto', 'Noto', sans-serif;
+}

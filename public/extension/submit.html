@@ -2,7 +2,7 @@
 <html >
 <head>
   <script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="./popup.js"></script>
+  <script type="text/javascript" src="./submit.js"></script>
 
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js">  </script>
   <link rel="import" href="bower_components/paper-button/paper-button.html">
@@ -45,6 +45,10 @@
     .horizontal-section {
       text-align: center;
     }
+    .linkA{
+      margin-top: 5%;
+      background: black;
+    }
   </style>
 
 </head>
@@ -74,7 +78,8 @@
         <paper-button raised id="tagSubmission">Submit</paper-button>
 
         <div class="bookmarks">
-            <a class="links" target="_blank" href="OUR_PAGE">View Your Bookmarks</a>
+<!-- <paper-item><a target="_blank" id="outerLink" class="links linkA" href="www.google.com">View Your Bookmarks</a></paper-item> -->
+            <paper-button id="outerLink" class="links linkA"> View Your Bookmarks</paper-button>
         </div>
 
 
