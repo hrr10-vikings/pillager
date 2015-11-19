@@ -62,3 +62,37 @@ input[type="password"] {
 a, u {
     text-decoration: none;
 }
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+nav {
+    background-color: #333;
+    margin: 0;
+    overflow: hidden;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    height: 36px;
+}
+nav ul li {
+    display: inline-block;
+    list-style-type: none;
+    cursor: pointer; 
+    cursor: hand;
+}
+
+nav > ul > li > a {
+    color: #aaa;
+    background-color:#333;
+    display: block;
+    line-height: 2em;
+    padding: 4px 4px;
+    text-decoration: none;
+}
+
