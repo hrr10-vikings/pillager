@@ -9,7 +9,6 @@ module.exports.parseUrl = function(req, res) {
       Array.prototype.push.apply(results, req.body.tags);
     }
     db.addBookmark(req.user, req.body.newUrl, results);
-    console.log(results);
     res.end(JSON.stringify(results)); 
   });
 }
