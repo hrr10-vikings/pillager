@@ -12,9 +12,9 @@
 			<div id="signinForm">
 			<form name="signinForm" ng-submit='signin()'>
 				<label>Username</label><br>
-				  <input type="text" ng-model="user.username"><br><br>
+				  <input name="username" pattern="^[A-Za-z0-9]{1,16}$" title="Must be below 16 characters long and not use any special characters" maxlength="16" type="text" ng-model="user.username" required><br><br>
 				<label>Password</label><br>
-				  <input type="password" ng-model="user.password"><br><br>
+				  <input name="pw" pattern="[A-Za-z0-9]{8,}$" title="Must be at least 8 characters long" type="password" ng-model="user.password" required><br><br>
 				<div id="group">
 					<a href="#/signup">Need an account? Sign up here!</a>
 					<button>Login</button><br><br>
