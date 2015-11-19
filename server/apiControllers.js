@@ -21,10 +21,8 @@ module.exports.getUrls = function(req, res) {
   });
 };
 
-module.exports.signIn = function(req, res) {
-  module.exports.signIn = function(req, res, next) {
+module.exports.signIn = function(req, res, next) {
     auth.signIn(req, res, next);
-  }
 };
 
 module.exports.signUp = function(req, res, next) {
