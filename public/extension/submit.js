@@ -22,3 +22,6 @@ var pillage = function(tab,data){
 }
 // console.log('testing');
 window.onload = base; //performs checks when the page is loaded
+$( document ).ready(function() {
+    document.getElementById("tagSubmission").addEventListener("click",pillage);
+});

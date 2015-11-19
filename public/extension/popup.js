@@ -42,3 +42,6 @@ var login = function(un,pw){
 }
 // console.log('testing');
 window.onload = base; //performs checks when the page is loaded
+$( document ).ready(function() {
+    document.getElementById("signInButton").addEventListener("click",login);
+});
