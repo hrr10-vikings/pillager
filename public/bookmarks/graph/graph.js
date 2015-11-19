@@ -28,7 +28,7 @@ var massageDataForD3Graph = function (bookmarks) {
     var siteCount = 0;
 
     for (var j = 0; j < bookmarks.length; j++) {
-      if (bookmarks[j].tags.indexOf(tagname) > -1) {
+      if (bookmarks[j].tags && bookmarks[j].tags.indexOf(tagname) > -1) {
         var siteObj = {};
         siteObj['name'] = bookmarks[j].site;
         siteObj['size'] = bookmarks.length * 1000;
@@ -173,7 +173,6 @@ var buildGraph = function (data) {
             .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseout", function(d) {
-          console.log("mousout");
           div.transition()
             .duration(5000)
             .style("opacity", 0);
