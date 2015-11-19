@@ -14,7 +14,7 @@ module.exports.parseUrl = function(req, res) {
 };
 
 module.exports.getUrls = function(req, res) {
-  db.getAllBookmarks('ben', function (sites) { //req.user
+  db.getAllBookmarks(req.user, function (sites) {
     res.end(JSON.stringify(sites));
   });
 };
