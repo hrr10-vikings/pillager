@@ -10,6 +10,7 @@
   },
   "author": "",
   "license": "MIT",
+  "engine": "0.12.0",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
