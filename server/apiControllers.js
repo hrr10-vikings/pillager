@@ -11,18 +11,22 @@ module.exports.parseUrl = function(req, res) {
     db.addBookmark(req.user, req.body.newUrl, results);
     res.end(JSON.stringify(results));
   });
-}
+};
 
 module.exports.getUrls = function(req, res) {
+  //console.log("req.user", req.user);
+  //db.getAllBookmarks(req.user, function (sites) {
   db.getAllBookmarks(req.user, function (sites) {
     res.end(JSON.stringify(sites));
   });
-}
+};
 
-module.exports.signIn = function(req, res, next) {
-  auth.signIn(req, res, next);
-}
+module.exports.signIn = function(req, res) {
+  module.exports.signIn = function(req, res, next) {
+    auth.signIn(req, res, next);
+  }
+};
 
 module.exports.signUp = function(req, res, next) {
   auth.signUp(req, res, next);
-}
+};

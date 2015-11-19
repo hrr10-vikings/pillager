@@ -10,10 +10,11 @@
     "test",
     "tests"
   ],
-    "dependencies": {
+  "dependencies": {
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
     "jquery": "~2.1.4",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "d3": "~3.5.9"
   }
 }
