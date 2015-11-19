@@ -22,9 +22,19 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+# Server Dependency directory
 node_modules
 
-# Alchemy API key
-api_key.txt
+# Client Dependency directory
+bower_components
+
+#config file
+/server/config.js
+
+
+#Mac OS files
+.DS_Store
+**/.DS_Store
+
+#Alchemy API Key
+/server/api_key.txt

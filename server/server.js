@@ -1,19 +1,23 @@
 var express = require('express');
+var bodyParser = require('body-parser').json();
 var alchemy = require('./alchemy');
+var path = require('path');
 var app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-})
+app.set('port', process.env.PORT || 8080);
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Pillager app listening at http://%s:%s', host, port);
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../public/index.html'));
 });
 
-//ALCHEMY SAMPLE USAGE:
-//alchemy.getKeywords('http://www.google.com', 10, function(results) {
-//    console.log(results);
-//});
+
+app.use(bodyParser);
+
+var apiRouter = express.Router();
+app.use(express.static(__dirname + '/../public'));
+app.use('/api', apiRouter);
+
+require('./apiRouter')(apiRouter);
+
+app.listen(app.get('port'));
+console.log('Pillager app now listening on port ' + app.get('port'));

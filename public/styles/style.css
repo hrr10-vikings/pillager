@@ -1,0 +1,64 @@
+#viking {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#vikingContainer {
+  height: 300px;
+  width: 300px;
+}
+
+#logoContainer {
+	width: 300px;
+	height: 361px;
+	margin: auto;
+}
+
+#logoheader {
+	margin: auto;
+	text-align: center;
+	font-size: 53px;
+}
+
+#signinContainer,
+#signupContainer {
+	width: 300px;
+	margin: auto;
+}
+
+#signinHeader,
+#signupHeader {
+	margin: auto;
+	text-align: center;
+	font-size: 30px; 
+}
+
+#signinForm,
+#signupForm {
+	margin-top: 15px;
+}
+
+#group {
+	width:305px;
+	margin:auto;
+}
+
+button{
+    float: right;
+	height: 27px;
+    width: 79px;
+    font-size: small;
+}
+
+
+input[type="text"],
+input[type="password"] {
+    width: 300px;
+    margin: auto;
+    height: 23px;
+    font-size: inherit;
+}
+
+a, u {
+    text-decoration: none;
+}

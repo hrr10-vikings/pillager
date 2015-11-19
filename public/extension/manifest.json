@@ -1,0 +1,23 @@
+{
+  "name": "Pillager",
+  "description": "Organize bookmarks based on tag names",
+  "version": "1.0",
+
+  "manifest_version": 2,
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "pillage this page"
+  },
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "storage",
+    "tabs"
+  ]
+  /* ActiveTab - Run JS on the current Page
+  Bookmarks - Allows us to create bookmarks
+  Storage - Gives us access to Chrome storage
+  Tabs - Open new tab*/
+}

@@ -1,0 +1,26 @@
+<div id="signin">
+<!-- container for logo and h1 header -->
+  <div id="logoContainer">
+	  <h1 id="logoheader">Pillager</h1>
+		<div id="vikingContainer">
+			<img id="viking" src="../assets/viking.png" alt="">
+		</div>
+  </div>
+<!-- container for sign in form and h2 header -->
+	<div id="signinContainer">
+		<h2 id="signinHeader">Please sign in...</h2>
+			<div id="signinForm">
+			<form name="signinForm" ng-submit='signin()'>
+				<label>Email</label><br>
+				  <input type="text" ng-model="user.email"><br><br>
+				<label>Password</label><br>
+				  <input type="password" ng-model="user.password"><br><br>
+				<div id="group">
+					<a href="#/signup">Need an account? Sign up here!</a>
+					<button>Login</button><br><br>
+				</div>
+			</form>	
+		</div>
+	</div>
+
+</div>
