@@ -43,23 +43,23 @@ angular.module('pillager.services', [])
   };
 })
 
-<<<<<<< HEAD
-=======
-.factory('Data', function ($http) {
-  //handles get user bookmark data from server
-  var getBookmarks = function (user) {
-    return $http({
-      method: 'GET',
-      url: '/api/urls',
-      data: user
-    })
-      .then(function (resp) {
-        console.log(resp);
-      });
-  };
+  .factory('Data', function ($http) {
+    //handles get user bookmark data from server
 
-  return {
-    getBookmarks: getBookmarks
-  };
-});
->>>>>>> start on graph client side
+    return {
+      fn: getBookmarks = function (user, callback) {
+        return $http({
+          method: 'GET',
+          url: '/api/urls',
+          data: user
+        })
+          .then(function (resp) {
+            callback(resp.data);
+          });
+      }
+    };
+
+    return {
+      getBookmarks: getBookmarks
+    };
+  });
