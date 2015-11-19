@@ -1,6 +1,7 @@
 var pillage = function(tab,data){
   // Send Data to server
   var currentURL;
+  var serverUrl = 'test'
   // var request = new XMLHttpRequest();
   var array = $('#tags').val().split("");
   chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
@@ -8,7 +9,7 @@ var pillage = function(tab,data){
 });
   $.ajax({
     method: 'POST',
-    url: "test.html",
+    url: serverUrl,
     crossDomain: true,
     dataType: 'jsonp',
     data: {tags: array, currentURL: currentURL},
@@ -20,5 +21,17 @@ var pillage = function(tab,data){
   });
   // request.open('POST',url,true);
 }
+var linkOpener = function(){
+  console.log('openPlease');
+  var newURL = "http://stackoverflow.com/"; //update with correct url
+  chrome.tabs.create({ url: newURL });
+}
 // console.log('testing');
-window.onload = base; //performs checks when the page is loaded
+
+$( document ).ready(function() {
+    document.getElementById("tagSubmission").addEventListener("click",pillage);
+    document.getElementById("outerLink").addEventListener("click",linkOpener);
+    chrome.extension.onRequest.addListener(function(request, sender) {
+      chrome.tabs.update(sender.tab.id, {url: request.redirect});
+    });
+});

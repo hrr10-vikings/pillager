@@ -2,7 +2,7 @@
 <html >
 <head>
   <script type="text/javascript" src="./jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="./popup.js"></script>
+  <script type="text/javascript" src="./submit.js"></script>
 
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js">  </script>
   <link rel="import" href="bower_components/paper-button/paper-button.html">
@@ -19,7 +19,7 @@
  <link rel="import" href="bower_components/iron-image/iron-image.html">
  <!-- <link rel="import" href="bower_components/paper-styles/default-theme.html"> -->
  <link rel="import" href="paper-menu-shared-styles.html">
- <link rel="stylesheet" href="css/master.css" >
+
 <!-- Add styles for Polymer Objects on the HTML page -->
  <style>
     paper-button {
@@ -45,8 +45,12 @@
     .horizontal-section {
       text-align: center;
     }
+    .linkA{
+      margin-top: 5%;
+      background: black;
+    }
   </style>
-
+  <link rel="stylesheet" href="css/master.css" >
 </head>
 
   <body >
@@ -70,11 +74,12 @@
         </paper-toolbar>
       </div>
       <div class="dataEntry">
-      <paper-textarea label="Enter your tags" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-textarea>
-        <paper-button raised>Submit</paper-button>
+      <paper-input label="Enter your tags(seperated by commas)" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-input>
+        <paper-button raised id="tagSubmission">Submit</paper-button>
 
         <div class="bookmarks">
-            <a class="links" target="_blank" href="OUR_PAGE">View Your Bookmarks</a>
+<!-- <paper-item><a target="_blank" id="outerLink" class="links linkA" href="www.google.com">View Your Bookmarks</a></paper-item> -->
+            <paper-button id="outerLink" class="links linkA"> View Your Bookmarks</paper-button>
         </div>
 
 
