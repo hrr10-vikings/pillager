@@ -59,6 +59,7 @@ angular.module('pillager.services', [])
           });
       } else {
         callback($rootScope.data)
+
       }
     }
   };
