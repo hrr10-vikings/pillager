@@ -23,7 +23,7 @@
 
 ## Requirements
 
-- Node 0.10.x
+- Node 0.12.x
 - Express 4.2.x
 - Underscore 1.8.x
 - Firebase 2.3.x
