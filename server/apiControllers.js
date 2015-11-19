@@ -5,7 +5,11 @@ var NUM_KEYWORDS = 4;
 
 module.exports.parseUrl = function(req, res) {
   alchemy.getKeywords(req.body.newUrl, NUM_KEYWORDS, function(results) {
+    if (req.body.tags && req.body.tags.length > 0) {
+      Array.prototype.push.apply(results, req.body.tags);
+    }
     db.addBookmark(req.user, req.body.newUrl, results);
+    console.log(results);
     res.end(JSON.stringify(results)); 
   });
 }
