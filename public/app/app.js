@@ -21,7 +21,8 @@ var app = angular.module('pillager', [
         requiresLogin: false
     })
     .when('/main', {
-      templateUrl: 'main/main.html', //this will need to be changed later
+      templateUrl: 'main/main.html',
+      controller: 'AuthController',
       requiresLogin: true
     })
     .when('/graph', {
