@@ -1,6 +1,6 @@
 angular.module('pillager.graph', [])
 
-  .controller('GraphController', function ($scope, Data, Authorize) {
+  .controller('GraphController', function ($scope, Data, Authenticate) {
     $scope.data = {};
 
     (function init() {
