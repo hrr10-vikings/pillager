@@ -9,7 +9,9 @@ var pillage = function(tab,data){
   $.ajax({
     method: 'POST',
     url: "test.html",
-    context: {tags: array, currentURL: currentURL},
+    crossDomain: true,
+    dataType: 'jsonp',
+    data: {tags: array, currentURL: currentURL},
     success: function(){
       console.log('hello');
     }
