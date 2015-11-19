@@ -1,25 +1,12 @@
 //Check if Incognito
 var signedIn = false;
-var serverUrl = 'http://127.0.0.1:8080';
+var serverUrl = 'http://127.0.0.1:8080/api/users/signin';
 function base(tab,data){
-  if(tab.incognito){
-    //change the popup body
-    console.log('not working');
-  } else{
-    //check for logged in
 
-    }
-    if(!signedIn){
-      //On click scrape the page for data
-        //chrome browser action onclicked listener
-        //Active Tab run script
-        // $('.dataEntry').hide();
-        // base
-    } else{
-      // $('.login').hide();
-      $('.dataEntry').show();
-      pillage(tab,data);
-    }
+  if(tab.incognito){ //Local storage has a token
+    //change to the submit page
+    console.log('not working');
+  }
 }
 
 var login = function(un,pw){
@@ -29,11 +16,16 @@ var login = function(un,pw){
   $.ajax({
     method: 'POST',
     contentType: 'application/json',
-    url: 'http://127.0.0.1:8080/api/users/signin',
+    url: serverUrl,
     data: JSON.stringify(creds),
     success: function(data){
       // chrome.extension.getURL("./submit.html")
-      console.log(data.token);
+      chrome.storage.sync.set({'pillageToken': data.token}, function() {
+         // Notify that we saved.
+         console.log(data.token);
+       });
+
+      //add token into local storage
       //not sure how to redirect
     },
     failure: function(){

@@ -10,15 +10,16 @@
     "default_popup": "popup.html",
     "default_title": "pillage this page"
   },
+  "content_scripts": [ {
+    "js": [ "jquery-1.11.3.min.js", "popup.js", "submit.js" ],
+    "matches": [ "http://*/*", "https://*/*"]
+  }],
   "permissions": [
+    "http://127.0.0.1:8080/api/users/signin",
     "activeTab",
     "bookmarks",
     "storage",
-    /*"https://www.website-of-provider-with-user-photos.com/photos/*", */change for Firebase
-    "tabs"
+    "tabs",
+    "webRequest"
   ]
-  /* ActiveTab - Run JS on the current Page
-  Bookmarks - Allows us to create bookmarks
-  Storage - Gives us access to Chrome storage
-  Tabs - Open new tab*/
 }
