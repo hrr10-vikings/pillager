@@ -31,7 +31,7 @@ var app = angular.module('pillager', [
     .when('/tag', {
         templateUrl: 'bookmarks/tag/tag.html',
         controller: 'TagController',
-        requiresLogin: false,
+        requiresLogin: true,
     })
     .otherwise({
     	redirectTo: '/signin'
