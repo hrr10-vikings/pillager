@@ -62,7 +62,7 @@ input[type="password"] {
 a, u {
     text-decoration: none;
 }
-
+ 
 body{
     margin: 0;
     padding: 0;
@@ -78,22 +78,21 @@ nav {
 nav ul{
     margin: 0;
     padding: 0;
-    height: 36px;
-    float: right;
 }
 nav ul li {
+    /* This allow us to arrange list items in a row, without using float */
     display: inline-block;
     list-style-type: none;
-    cursor: pointer; 
-    cursor: hand;
 }
 
+/* Create a style for the first level items */
 nav > ul > li > a {
     color: #aaa;
     background-color:#333;
     display: block;
     line-height: 2em;
-    padding: 4px 4px;
+    padding: 0.5em 0.5em;
     text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
 }
-
