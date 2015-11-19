@@ -5,6 +5,9 @@ var NUM_KEYWORDS = 4; //how many automatic keywords should be associated with ea
 
 module.exports.parseUrl = function(req, res) {
   alchemy.getKeywords(req.body.newUrl, NUM_KEYWORDS, function(results) {
+    if (req.body.tags && req.body.tags.length > 0) {
+      Array.prototype.push.apply(results, req.body.tags);
+    }
     db.addBookmark(req.user, req.body.newUrl, results);
     res.end(JSON.stringify(results));
   });
