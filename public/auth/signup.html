@@ -11,10 +11,10 @@
 		<h2 id="signupHeader">Create an account</h2>
 			<div id="signupForm">
 			<form name="signupForm" ng-submit='signup()'>
-				<label>Enter an email address</label><br>
-				  <input type="text" ng-model="user.email"><br><br>
+				<label>Create a username</label><br>
+				  <input name="username" pattern="^[A-Za-z0-9]{1,16}$" title="Must be below 16 characters long and not use any special characters" maxlength="16" type="text" ng-model="user.username" required><br><br>
 				<label>Create a password</label><br>
-				  <input type="password" ng-model="user.password"><br><br>
+				  <input name="pw" pattern="[A-Za-z0-9]{8,}$" title="Must be at least 8 characters long" type="password" ng-model="user.password" required><br><br>
 				<div id="group">
 					<a href="#/signin">Already have an account? Login!</a>
 					<button>Submit</button>
