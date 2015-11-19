@@ -10,11 +10,11 @@ var app = angular.module('pillager', [
   $routeProvider
     .when('/signin', {
     	templateUrl: 'auth/signin.html',
-    	controller: 'AuthController'
+    	controller: 'AuthController',
     })
     .when('/signup', {
     	templateUrl: 'auth/signup.html',
-    	controller: 'AuthController'
+    	controller: 'AuthController',
     })
     .when('/main', {
       templateUrl: 'main/main.html', //this will need to be changed later
@@ -23,7 +23,7 @@ var app = angular.module('pillager', [
     })
     .when('/graph', {
       templateUrl: 'bookmarks/graph/graph.html',
-      controller: 'GraphController'
+      controller: 'GraphController',
     })
     .otherwise({
     	redirectTo: '/signup'
