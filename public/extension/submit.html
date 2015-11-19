@@ -19,7 +19,7 @@
  <link rel="import" href="bower_components/iron-image/iron-image.html">
  <!-- <link rel="import" href="bower_components/paper-styles/default-theme.html"> -->
  <link rel="import" href="paper-menu-shared-styles.html">
- <link rel="stylesheet" href="css/master.css" >
+
 <!-- Add styles for Polymer Objects on the HTML page -->
  <style>
     paper-button {
@@ -50,7 +50,7 @@
       background: black;
     }
   </style>
-
+  <link rel="stylesheet" href="css/master.css" >
 </head>
 
   <body >
@@ -74,7 +74,7 @@
         </paper-toolbar>
       </div>
       <div class="dataEntry">
-      <paper-textarea label="Enter your tags" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-textarea>
+      <paper-input label="Enter your tags(seperated by commas)" prevent-invalid-input allowed-pattern="[a-zA-Z0-9,\s]" id="tags"></paper-input>
         <paper-button raised id="tagSubmission">Submit</paper-button>
 
         <div class="bookmarks">

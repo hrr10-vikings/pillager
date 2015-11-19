@@ -31,4 +31,7 @@ var linkOpener = function(){
 $( document ).ready(function() {
     document.getElementById("tagSubmission").addEventListener("click",pillage);
     document.getElementById("outerLink").addEventListener("click",linkOpener);
+    chrome.extension.onRequest.addListener(function(request, sender) {
+      chrome.tabs.update(sender.tab.id, {url: request.redirect});
+    });
 });

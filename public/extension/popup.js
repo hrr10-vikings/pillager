@@ -15,7 +15,6 @@ function base(tab,data){
 }
 
 var login = function(un,pw){
-  console.log('testing');
   un = un || $('#un').val();
   pw = pw || $('#pw').val();
   var creds = {username: un, password: pw}
@@ -26,7 +25,7 @@ var login = function(un,pw){
     data: JSON.stringify(creds),
     success: function(data){
       // chrome.extension.getURL("./submit.html")
-      chrome.storage.sync.set({'pillageToken': data.token}, function() {
+      chrome.storage.sync.set({'pillageToken': data.token, 'username':un, 'password':pw}, function() {
          // Notify that we saved.
          console.log(data.token);
          //change to submit

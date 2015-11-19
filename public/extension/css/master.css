@@ -18,6 +18,7 @@ iron-image {
    }
 .title{
   text-align: center;
+  line-height: 10px;
 }
 .login, .dataEntry{
   padding: 10%
