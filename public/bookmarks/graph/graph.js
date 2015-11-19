@@ -2,8 +2,22 @@ var getUniqueTags = function (bookmarks) {
   return _.chain(bookmarks).pluck('tags').flatten().uniq().value();
 };
 
+var d3Bookmarks;
+
 var massageDataForD3Graph = function (bookmarks) {
   var allUniqueTags = getUniqueTags(bookmarks);
+
+  var liList = '';
+
+  for (var i = 0; i < allUniqueTags.length; i++) {
+    liList += '<li>' + allUniqueTags[i] + '</li>';
+  }
+
+  $('#ulTags').html(liList);
+
+  $("#ulTags").on("click", "li", function() {
+    updateGraph($(this).text())
+  });
 
   var arrRoot = [];
   var id = 0;
@@ -38,12 +52,24 @@ var massageDataForD3Graph = function (bookmarks) {
   retObj['name'] = 'root';
   retObj['children'] = arrRoot;
 
+  d3Bookmarks = retObj;
+
   buildGraph(retObj);
 };
 
+var updateGraph = function (tagName) {
+  $('#dataViz').empty();
+
+  for (var i = 0; i < d3Bookmarks.children.length; i++) {
+    if (d3Bookmarks.children[i].name === tagName) {
+      buildGraph(d3Bookmarks.children[i])
+    }
+  }
+};
+
 var buildGraph = function (data) {
-  var width = $(document).width(),
-    height = $(document).height(),
+  var width = 1000, //$('#dataViz').width(),
+    height = 800, //$('#dataViz').height(),
     root;
 
   var force = d3.layout.force()
@@ -69,6 +95,10 @@ var buildGraph = function (data) {
   update();
 
   function update() {
+    var div = d3.select("body").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
     var nodes = flatten(data),
       links = d3.layout.tree().links(nodes);
 
@@ -128,20 +158,27 @@ var buildGraph = function (data) {
         })
         .style("fill", color)
         .on("click", click)
+        .on("mouseover", function(d) {
+          var html = '';
+          if (d.name.substring(0, 4) === 'http')  {
+            html = "<a href='" + d.name + "' target='_blank'>" + d.name + "</a>";
+          } else {
+            html = d.name;
+          }
+          div.transition()
+            .duration(200)
+            .style("opacity", .9);
+          div.html(html)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+          console.log("mousout");
+          div.transition()
+            .duration(5000)
+            .style("opacity", 0);
+        })
         .call(force.drag);
-
-    //node.enter()
-    //  .append("text")
-    //    .attr("class", "text")
-    //    .attr("x", function (d) {
-    //      return d.x;
-    //    })
-    //    .attr("y", function (d) {
-    //      return d.y;
-    //    })
-    //    .text(function (d) {
-    //      return d.name
-    //    });
   }
 
   function tick() {

@@ -17,6 +17,33 @@
         font-size: 10px;
     }
 
+    .tooltip {
+        position: absolute;
+        text-align: center;
+        width: 200px;
+        height: 16px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+    }
+
+    #tag-list, #dataViz {
+        font-family: sans-serif;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    #graph-container {
+        display: inline-flex;
+    }
 </style>
 
-<div id="dataViz"></div>
+<div id="graph-container">
+    <div id="tag-list">
+        <ul id="ulTags"></ul>
+    </div>
+
+    <div id="dataViz"></div>
+</div>  
