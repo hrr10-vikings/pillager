@@ -43,3 +43,30 @@ angular.module('pillager.services', [])
   };
 })
 
+  .factory('Data', function ($http, $rootScope) {
+    //handles get user bookmark data from server
+    //example usage from controller:   Data.fn(userName, myCallbackToUseData);
+    //not tested yet with multiple views calling data thus reusing the $rootscope
+
+    return {
+      fn: getBookmarks = function (user, callback) {
+        if (!$rootScope.data) {
+          return $http({
+            method: 'GET',
+            url: '/api/urls',
+            data: user
+          })
+            .then(function (resp) {
+              $rootScope.data = resp.data;
+              callback($rootScope.data);
+            });
+        } else {
+          callback($rootScope.data)
+        }
+      }
+    };
+
+    return {
+      getBookmarks: getBookmarks
+    };
+  });

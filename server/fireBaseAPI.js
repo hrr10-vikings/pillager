@@ -102,7 +102,7 @@ module.exports.getAllBookmarksByTag = function (userName, tag, callback) {
 
 // module.exports.addBookmark("pbhorje", "www.gogetem.com?q=candy", ['gum', 'candy']);
 //
-//getAllBookmarks("ben", function (sites) {
+//module.exports.getAllBookmarks("ben", function (sites) {
 //  console.log(sites);
 //});
 //

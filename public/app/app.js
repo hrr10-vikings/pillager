@@ -1,6 +1,7 @@
 var app = angular.module('pillager', [
     'pillager.services', 
     'pillager.auth',
+    'pillager.graph',
     'ngRoute'
 ])
 
@@ -19,6 +20,13 @@ var app = angular.module('pillager', [
         templateUrl: 'main/main.html', //this will need to be changed later
         controller: 'AuthController',
         requiresLogin: true
+    })
+    .when('/graph', {
+      templateUrl: 'bookmarks/graph/graph.html',
+      controller: 'GraphController'
+    })
+    .otherwise({
+      redirectTo: '/signin'
     })
     .otherwise({
     	redirectTo: '/signup'
