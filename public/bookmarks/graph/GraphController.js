@@ -7,7 +7,7 @@ angular.module('pillager.graph', [])
       // load data, init scope, etc.
       //Data.getBookmarks(Authorize.user);
 
-      Data.fn('ben', massageData);
+      Data.fn('ben', massageDataForD3Graph);
 
     })();
 

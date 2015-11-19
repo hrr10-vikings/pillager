@@ -1,5 +1,9 @@
-var massageData = function (bookmarks) {
-  var allUniqueTags = _.chain(bookmarks).pluck('tags').flatten().uniq().value();
+var getUniqueTags = function (bookmarks) {
+  return _.chain(bookmarks).pluck('tags').flatten().uniq().value();
+};
+
+var massageDataForD3Graph = function (bookmarks) {
+  var allUniqueTags = getUniqueTags(bookmarks);
 
   var arrRoot = [];
   var id = 0;
@@ -34,8 +38,6 @@ var massageData = function (bookmarks) {
   retObj['name'] = 'root';
   retObj['children'] = arrRoot;
 
-  //console.log({'root'});
-
   buildGraph(retObj);
 };
 
@@ -50,7 +52,7 @@ var buildGraph = function (data) {
     .charge(-400)
     .linkDistance(200);
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#dataViz").append("svg")
     .attr("width", width)
     .attr("height", height);
 
