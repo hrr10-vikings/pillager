@@ -19,3 +19,10 @@ iron-image {
 .title{
   text-align: center;
 }
+.login, .dataEntry{
+  padding: 10%
+}
+.paper-menu a{
+  text-decoration: none;
+  color: #212121;
+}

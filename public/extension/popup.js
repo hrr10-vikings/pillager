@@ -22,27 +22,27 @@ function base(tab,data){
 }
 
 var login = function(){
-  $('#un').val();
-  $('#pw').val();
-  var redirectUri = chrome.identity.getRedirectURL("oauth2");  //not sure
+  var un = $('#un').val();
+  var pw = $('#pw').val();
+  var creds = {username: un, password: pw}
+  $.ajax({
+    method: 'POST',
+    url: "OUR_DATABASE",
+    context: creds,
+    success: function(){
+      chrome.extension.getURL("./submit.html")
+      //not sure how to redirect
+    },
+    failure: function(){
+      console.log("incorrect information");
+    }
+  }).done(function() {
+    chrome.storage.sync.set({'pillageLogin': creds}, function() {
+         // Notify that we saved.
+         console.log('Settings saved');
+       });
+  });
 
-  // chrome.identify.launchWebAuthFlow(
-  //   {'url': '<url-to-do-auth>', 'interactive': true},
-  //   function(redirect_url) { /* Extract token from redirect_url */ });
-  //send as a JSON Object
-  //wait for a response
-    //change logged in to true
-      //run base
-}
-var pillage = function(tab,data){
-  if(signedIn){
-    // Send Data to server
-    var url = 'www.google.com';
-    var request = new XMLHttpRequest();
-    request.open('POST',url,true);
-  } else{
-    console.log("please log in");
-  }
 }
 // console.log('testing');
 window.onload = base; //performs checks when the page is loaded
