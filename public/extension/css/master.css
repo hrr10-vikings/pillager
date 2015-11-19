@@ -1,0 +1,28 @@
+/*.dropdown-content{
+
+}*/
+paper-menu {
+     display: block;
+   }
+paper-menu-button {
+     margin: auto;
+   }
+iron-image {
+     padding: 1em;
+   }
+.item {
+     max-width: 300px;
+   }
+.horizontal-section {
+     text-align: center;
+   }
+.title{
+  text-align: center;
+}
+.login, .dataEntry{
+  padding: 10%
+}
+.paper-menu a{
+  text-decoration: none;
+  color: #212121;
+}

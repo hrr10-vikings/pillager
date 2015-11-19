@@ -38,3 +38,6 @@ bower_components
 
 #Alchemy API Key
 /server/api_key.txt
+
+#Landing Page Component
+/public/extension/landingPage.html

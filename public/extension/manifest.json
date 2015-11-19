@@ -14,6 +14,7 @@
     "activeTab",
     "bookmarks",
     "storage",
+    /*"https://www.website-of-provider-with-user-photos.com/photos/*", */change for Firebase
     "tabs"
   ]
   /* ActiveTab - Run JS on the current Page
