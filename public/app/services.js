@@ -49,12 +49,11 @@ angular.module('pillager.services', [])
     //not tested yet with multiple views calling data thus reusing the $rootscope
 
     return {
-      fn: getBookmarks = function (user, callback) {
+      fn: getBookmarks = function (callback) {
         if (!$rootScope.data) {
           return $http({
             method: 'GET',
-            url: '/api/urls',
-            data: user
+            url: '/api/urls'
           })
             .then(function (resp) {
               $rootScope.data = resp.data;
