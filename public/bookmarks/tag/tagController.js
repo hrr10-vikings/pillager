@@ -33,4 +33,4 @@ angular.module('pillager.tag', [])
                 })
                 .text(function(d) { return d.text; });
     }
-});
+})
