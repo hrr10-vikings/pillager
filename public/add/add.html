@@ -20,11 +20,15 @@
       <div id="signinForm">
       <form name="addForm" ng-submit='add()'>
         <label>URL</label><br>
-          <input name="url" type="text" ng-model="url" required><br><br>
+          <input name="url" type="url" ng-model="url" required><br><br>
         <label>Custom tags (comma delimited)</label><br>
           <input name="tags" type="text" ng-model="tags"><br><br>
           <button>Pillage!</button><br><br>
       </form> 
+    </div> <br>
+    <div id="added">
+        <div id="url-added"></div><br>
+        <div id="tags-added"></div>
     </div>
   </div>
 

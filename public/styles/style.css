@@ -56,7 +56,8 @@ button{
 
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="url"] {
     width: 300px;
     margin: auto;
     height: 23px;
@@ -99,4 +100,8 @@ nav > ul > li > a {
     text-decoration: none;
     cursor: pointer;
     cursor: hand;
+}
+
+#added {
+    color: steelblue;
 }
