@@ -55,7 +55,8 @@ var login = function(){
 
 }
 // console.log('testing');
-window.onload = base; //performs checks when the page is loaded
+ ; //performs checks when the page is loaded
 $( document ).ready(function() {
+    base();
     document.getElementById("signInButton").addEventListener("click",login);
 });
