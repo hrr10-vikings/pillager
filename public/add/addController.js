@@ -16,9 +16,9 @@ angular.module('pillager.add', [])
       data: toSend
     }).then(function(res) {
       $("#added").hide();
-      $("#url-added").text("Site Bookmarked!  " + url);
+      $("#url-added").html("<b>Site Bookmarked!</b>  " + url);
 
-      var newTags = 'Tags:<br>';
+      var newTags = '<b>Tags:</b><br>';
       for (var i = 0; i < res.data.length; i++) {
         newTags += res.data[i] + '<br>';
       }
