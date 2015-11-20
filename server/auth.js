@@ -30,7 +30,6 @@ module.exports.checkAuth = function(req, res, next) {
 module.exports.signIn = function (req, res, next) {
   //pulls out the username and password from the request body
   var username = req.body.username, password = req.body.password;
-  
   //checks the database for the user and compares passwords if the user exists
   db.getUser(username, function(hash) {
     bcrypt.compare(password, hash, function(err, result) {
@@ -48,7 +47,7 @@ module.exports.signIn = function (req, res, next) {
 //checks the database for the username and password, and responds with a token if valid
 module.exports.signUp = function (req, res, next) {
   var username  = req.body.username, password  = req.body.password;
-    
+
   //if the user exists, send 409. if not, create the user and give them a token
   db.getUser(username, function() {res.sendStatus(409)}, function() {
     bcrypt.hash(password, null, null, function(err, hash) {
