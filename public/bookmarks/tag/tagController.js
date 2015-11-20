@@ -1,6 +1,6 @@
 angular.module('pillager.tag', [])
 
-.controller('TagController', function ($scope, Data) {
+.controller('TagController', function ($scope, $window, $location, Data) {
 
   Data.fn(function(results) {
     var frequencies = getTagFrequencies(results);
@@ -45,5 +45,11 @@ angular.module('pillager.tag', [])
                 })
                 .text(function(d) { return d.text; });
     }
-  })   
+  })
+
+  $scope.signout = function () {
+    //delete the token from browser storage and redirect to sign in page
+    $window.localStorage.removeItem('jwt');
+    $location.path('/signin');
+  }  
 })

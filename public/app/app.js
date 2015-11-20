@@ -4,6 +4,7 @@ var app = angular.module('pillager', [
     'pillager.graph',
     'pillager.tag',
     'pillager.add',
+    'pillager.tree',
     'ngRoute'
 ])
 
@@ -21,7 +22,8 @@ var app = angular.module('pillager', [
         requiresLogin: false
     })
     .when('/main', {
-      templateUrl: 'main/main.html', //this will need to be changed later
+      templateUrl: 'main/main.html',
+      controller: 'AuthController',
       requiresLogin: true
     })
     .when('/graph', {
@@ -30,9 +32,14 @@ var app = angular.module('pillager', [
       requiresLogin: true
     })
     .when('/tag', {
-        templateUrl: 'bookmarks/tag/tag.html',
-        controller: 'TagController',
-        requiresLogin: true,
+      templateUrl: 'bookmarks/tag/tag.html',
+      controller: 'TagController',
+      requiresLogin: true
+    })
+    .when('/tree', {
+      templateUrl: 'bookmarks/tree/tree.html',
+      controller: 'TreeController',
+      requiresLogin: true,
     })
     .when('/add', {
         templateUrl:'add/add.html',
@@ -57,7 +64,7 @@ var app = angular.module('pillager', [
     }
   };
 })
-.run(function ($rootScope, $location, Authenticate, $window) {
+.run(function ($rootScope, $location, Authenticate) {
   $rootScope.$on('$routeChangeStart', function (event, next, current) {
     if(next.$$route && next.$$route.requiresLogin && !Authenticate.isAuthed()) {
       $location.path('/signin');
