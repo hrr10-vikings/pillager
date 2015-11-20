@@ -1,29 +1,32 @@
+var token;
+chrome.storage.sync.get('pillageToken', function(result){
+  token = result.pillageToken;
+})
 var pillage = function(tab,data){
   // Send Data to server
   var currentURL;
-  var serverUrl = 'test'
+  var serverUrl = 'http://pillager-staging.herokuapp.com/api/urls'
   // var request = new XMLHttpRequest();
-  var array = $('#tags').val().split("");
+  var array = $('#tags').val();
+  array = array.split(',').map(function(str) {return str.trim()})
   chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     currentURL = tabs[0].url;
 });
   $.ajax({
     method: 'POST',
+    headers: {"x-access-token":token},
+    contentType: 'application/json',
     url: serverUrl,
-    crossDomain: true,
-    dataType: 'jsonp',
-    data: {tags: array, currentURL: currentURL},
-    success: function(){
-      console.log('hello');
+    data: JSON.stringify({tags: array}),
+    success: function(res){
+      console.log(res);
     }
-  }).done(function() {
-    $( this ).addClass( "done" );
-  });
+  })
   // request.open('POST',url,true);
 }
 var linkOpener = function(){
   console.log('openPlease');
-  var newURL = "http://stackoverflow.com/"; //update with correct url
+  var newURL = 'https://pillager-staging.herokuapp.com'; //update with correct url
   chrome.tabs.create({ url: newURL });
 }
 // console.log('testing');
