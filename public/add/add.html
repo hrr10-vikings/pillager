@@ -1,0 +1,31 @@
+<nav>
+  <ul>
+      <li><a href="#/main">Home</a></li>
+      <li><a href="#/graph">Graph</a></li>
+      <li><a href="#/tag">Tag Cloud</a></li>
+      <li><a href="#/add">Add Bookmarks</a></li>
+      <li><a ng-click="signout()">Logout</a></li>
+  </ul>
+</nav>
+
+<div id="logoContainer">
+    <h1 id="logoheader">Pillager</h1>
+    <div id="vikingContainer">
+      <img id="viking" src="../assets/viking.png" alt="">
+    </div>
+  </div>
+
+<div id="signinContainer">
+    <h2 id="signinHeader">Enter bookmark:</h2>
+      <div id="signinForm">
+      <form name="addForm" ng-submit='add()'>
+        <label>URL</label><br>
+          <input name="url" type="text" ng-model="url" required><br><br>
+        <label>Custom tags (comma delimited)</label><br>
+          <input name="tags" type="text" ng-model="tags"><br><br>
+          <button>Pillage!</button><br><br>
+      </form> 
+    </div>
+  </div>
+
+  
