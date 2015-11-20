@@ -1,6 +1,6 @@
-angular.module('pillager.tree', ['$controller'])
+angular.module('pillager.tree', [])
 
-.controller('TreeController', function ($scope, Data) {
+.controller('TreeController', function ($scope, Data, $window, $location) {
 
   Data.fn(function(results) {
     var jsonData = [];
@@ -24,5 +24,11 @@ angular.module('pillager.tree', ['$controller'])
            data: jsonData
            }
         });
-    })
+    });
+
+    $scope.signout = function () {
+    //delete the token from browser storage and redirect to sign in page
+      $window.localStorage.removeItem('jwt');
+      $location.path('/signin');
+    }
 })
