@@ -8,18 +8,16 @@
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
-    "default_title": "pillage this page"
+    "default_title": "Pillage this page!"
   },
   "content_scripts": [ {
     "js": [ "jquery-1.11.3.min.js", "popup.js", "submit.js" ],
     "matches": [ "http://*/*", "https://*/*"]
   }],
   "permissions": [
-    "http://127.0.0.1:8080/api/users/signin",
     "activeTab",
     "bookmarks",
     "storage",
-    "tabs",
-    "webRequest"
+    "tabs"
   ]
 }

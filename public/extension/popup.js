@@ -52,12 +52,6 @@ var login = function(){
       console.log("incorrect information");
     }
   })
-  // .done(function() {
-  //   chrome.storage.sync.set({'pillageLogin': creds}, function() {
-  //        // Notify that we saved.
-  //        console.log('Settings saved');
-  //      });
-  // });
 
 }
 // console.log('testing');
