@@ -14,6 +14,8 @@ angular.module('pillager.add', [])
       url: '/api/urls',
       data: toSend,
     }).then(function(res) {
+
+
       console.log(res);
     })
   };
