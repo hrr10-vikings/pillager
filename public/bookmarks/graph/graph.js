@@ -7,7 +7,7 @@ var d3Bookmarks;
 var massageDataForD3Graph = function (bookmarks) {
   var allUniqueTags = getUniqueTags(bookmarks);
 
-  var liList = '';
+  var liList = '<li class="highlight">All Tags</li>';
 
   for (var i = 0; i < allUniqueTags.length; i++) {
     liList += '<li>' + allUniqueTags[i] + '</li>';
@@ -16,6 +16,9 @@ var massageDataForD3Graph = function (bookmarks) {
   $('#ulTags').html(liList);
 
   $("#ulTags").on("click", "li", function() {
+    $("#ulTags li").removeClass("highlight");
+    $(this).addClass("highlight");
+
     updateGraph($(this).text())
   });
 
@@ -39,7 +42,6 @@ var massageDataForD3Graph = function (bookmarks) {
     }
 
     var tagObj = {};
-    //tagObj['id'] = ++id;
     tagObj['name'] = tagname;
     tagObj['children'] = siteArr;
     tagObj['size'] = siteCount * 20000;
@@ -48,7 +50,6 @@ var massageDataForD3Graph = function (bookmarks) {
   }
 
   var retObj = {};
-  //retObj['id'] = ++id;
   retObj['name'] = 'root';
   retObj['children'] = arrRoot;
 
@@ -60,16 +61,20 @@ var massageDataForD3Graph = function (bookmarks) {
 var updateGraph = function (tagName) {
   $('#dataViz').empty();
 
-  for (var i = 0; i < d3Bookmarks.children.length; i++) {
-    if (d3Bookmarks.children[i].name === tagName) {
-      buildGraph(d3Bookmarks.children[i])
+  if (tagName === 'All Tags') {
+    buildGraph(d3Bookmarks);
+  } else {
+    for (var i = 0; i < d3Bookmarks.children.length; i++) {
+      if (d3Bookmarks.children[i].name === tagName) {
+        buildGraph(d3Bookmarks.children[i])
+      }
     }
   }
 };
 
 var buildGraph = function (data) {
   var width = 1000, //$('#dataViz').width(),
-    height = 800, //$('#dataViz').height(),
+    height = 1000, //$('#dataViz').height(),
     root;
 
   var force = d3.layout.force()
@@ -159,6 +164,10 @@ var buildGraph = function (data) {
         .style("fill", color)
         .on("click", click)
         .on("mouseover", function(d) {
+          if (d.name === 'root') {
+            return;
+          }
+
           var html = '';
           if (d.name.substring(0, 4) === 'http')  {
             html = "<a href='" + d.name + "' target='_blank'>" + d.name + "</a>";
