@@ -3,6 +3,7 @@ var app = angular.module('pillager', [
     'pillager.auth',
     'pillager.graph',
     'pillager.tag',
+    'pillager.add',
     'ngRoute'
 ])
 
@@ -32,6 +33,11 @@ var app = angular.module('pillager', [
         templateUrl: 'bookmarks/tag/tag.html',
         controller: 'TagController',
         requiresLogin: true,
+    })
+    .when('/add', {
+        templateUrl:'add/add.html',
+        controller: 'AddController',
+        requiresLogin: true
     })
     .otherwise({
     	redirectTo: '/signin'
