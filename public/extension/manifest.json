@@ -19,6 +19,9 @@
     "matches": [ "http://*/*", "https://*/*"]
   }],
   "permissions": [
-    "storage"
+    "activeTab",
+    "bookmarks",
+    "storage",
+    "tabs"
   ]
 }
